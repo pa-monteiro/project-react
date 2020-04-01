@@ -78,21 +78,30 @@ export default class Main extends Component {
                         )}
                     </SubmitButton>
                 </Form>
-
-                <List>
-                    {repositories.map((repository) => (
-                        <li key={repository.name}>
-                            <span>{repository.name}</span>
-                            <Link
-                                to={`/repository/${encodeURIComponent(
-                                    repository.name
-                                )}`}
-                            >
-                                Detalhes
-                            </Link>
-                        </li>
-                    ))}
-                </List>
+                {repositories ? (
+                    <List>
+                        {repositories.map((repository) => (
+                            <li key={repository.name}>
+                                <span>{repository.name}</span>
+                                <Link
+                                    to={`/repository/${encodeURIComponent(
+                                        repository.name
+                                    )}`}
+                                >
+                                    Detalhes
+                                </Link>
+                            </li>
+                        ))}
+                    </List>
+                ) : (
+                    <>
+                        <p>
+                            Digite o seu nome de usuario no GitHub e o nome de
+                            um projeto.
+                        </p>
+                        <span>Ex: facebook/react </span>
+                    </>
+                )}
             </Container>
         );
     }
